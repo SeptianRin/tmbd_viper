@@ -2,32 +2,28 @@ package io.github.septianrin.tmdbviper.ui.detail
 
 import io.github.septianrin.tmdbviper.entity.User
 
-class DetailPresenter: DetailContract.Presenter {
+class DetailPresenter(private val router: DetailContract.Router): DetailContract.Presenter {
+
+    private var view: DetailContract.View? = null
     override fun bindView(view: DetailContract.View) {
-        TODO("Not yet implemented")
+        this.view = view
     }
 
     override fun unbindView() {
-        TODO("Not yet implemented")
+        view = null
     }
 
-    override fun onViewCreated(data: User?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onViewCreated() {
-        TODO("Not yet implemented")
+    override fun onViewCreated(data: User) {
+        view?.publishData(data)
     }
 
     override fun onBackClicked() {
-        TODO("Not yet implemented")
+        router.finish()
     }
 
     override fun onEmptyData(msg: Int) {
-        TODO("Not yet implemented")
+        view?.showMessage(msg)
+        router.finish()
     }
 
-    override fun onEmptyData() {
-        TODO("Not yet implemented")
-    }
 }

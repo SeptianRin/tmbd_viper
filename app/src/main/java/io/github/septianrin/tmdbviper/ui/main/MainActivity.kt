@@ -48,23 +48,22 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private fun initView() {
         val manager = LinearLayoutManager(this).apply { orientation = LinearLayoutManager.VERTICAL }
         binding.recyclerView.layoutManager = manager
-        binding.toolbar1.toolbar.title = "Title"
+        binding.toolbar1.toolbar.title = this.localClassName
         binding.toolbar1.toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
         binding.toolbar1.toolbar.setNavigationOnClickListener { presenter.onBackClicked() }
     }
 
     override fun showLoading() {
-        binding.recyclerView.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.INVISIBLE
         binding.progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        binding.recyclerView.visibility = View.INVISIBLE
+        binding.recyclerView.visibility = View.VISIBLE
         binding.progressBar.visibility = View.INVISIBLE
     }
 
     override fun publishData(data: List<User>) {
-        Log.e(TAG, "publishData: a" )
         val adapter = MainAdapter(data, object : MainAdapter.UserListener {
             override fun onItemClick(user: User) {
                 presenter.onItemClicked(user)

@@ -13,7 +13,7 @@ interface DetailContract {
     interface Presenter{
         fun bindView(view:View)
         fun unbindView()
-        fun onViewCreated(data: User?)
+        fun onViewCreated(data: User)
         fun onBackClicked()
         fun onEmptyData(msg: Int)
 

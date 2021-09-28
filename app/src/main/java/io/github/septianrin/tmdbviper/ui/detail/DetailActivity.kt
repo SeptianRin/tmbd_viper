@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import io.github.septianrin.tmdbviper.BuildConfig
 import io.github.septianrin.tmdbviper.R
@@ -23,7 +24,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     private lateinit var binding:ActivityDetailBinding
 
-    var presenter: DetailPresenter = DetailPresenter()
+    var presenter: DetailPresenter = DetailPresenter(DetailRouter(this))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,23 +34,27 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         presenter.bindView(this)
         if (intent.hasExtra(USER)){
             intent.getParcelableExtra<User>(USER)
-            presenter.onViewCreated(intent.getParcelableExtra(USER))
+            presenter.onViewCreated(intent.getParcelableExtra(USER)!!)
         }else {
             presenter.onEmptyData(R.string.app_name)
         }
     }
 
     private fun initView() {
-        binding.toolbar.toolbar.title = "Detail"
+        binding.toolbar.toolbar.title = this.localClassName
         binding.toolbar.toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
         binding.toolbar.toolbar.setNavigationOnClickListener { presenter.onBackClicked() }
     }
 
     override fun publishData(user: User) {
-        TODO("Not yet implemented")
+        binding.name.text =user.firstName
+        binding.desc.text = user.desc
+        binding.site.text = user.id.toString()
     }
 
     override fun showMessage(msg: Int) {
-        TODO("Not yet implemented")
+        Toast.makeText(this, "$msg", Toast.LENGTH_SHORT).show()
     }
+
+
 }

@@ -15,12 +15,10 @@ class MainPresenter(private val router: MainRouter, private val interactor: Main
     }
 
     override fun onViewCreated() {
-        //view?.showLoading()
+        view?.showLoading()
         val data: List<User> = interactor.getUsers()!!
-        if (data != null) {
-            view?.publishData(data)
-        }
-        //view?.hideLoading()
+        view?.publishData(data)
+        view?.hideLoading()
     }
 
     override fun onItemClicked(user: User) {
