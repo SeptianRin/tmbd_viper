@@ -1,5 +1,5 @@
 package io.github.septianrin.tmdbviper.ui.main
-import io.github.septianrin.tmdbviper.entity.User
+import io.github.septianrin.tmdbviper.entity.Joke
 
 class MainPresenter(private val router: MainRouter, private val interactor: MainInteractor ): MainContract.Presenter {
 
@@ -16,13 +16,13 @@ class MainPresenter(private val router: MainRouter, private val interactor: Main
 
     override fun onViewCreated() {
         view?.showLoading()
-        val data: List<User> = interactor.getUsers()!!
+        val data: List<Joke> = interactor.getUsers()!!
         view?.publishData(data)
         view?.hideLoading()
     }
 
-    override fun onItemClicked(user: User) {
-        router.openDetailUser(user)
+    override fun onItemClicked(joke: Joke) {
+        router.openDetailUser(joke)
     }
 
     override fun onBackClicked() {

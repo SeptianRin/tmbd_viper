@@ -1,10 +1,10 @@
 package io.github.septianrin.tmdbviper.ui.detail
 
-import io.github.septianrin.tmdbviper.entity.User
+import io.github.septianrin.tmdbviper.entity.Joke
 
 interface DetailContract {
     interface View{
-        fun publishData(user: User)
+        fun publishData(joke: Joke)
 
         fun showMessage(msg: Int)
 
@@ -13,7 +13,7 @@ interface DetailContract {
     interface Presenter{
         fun bindView(view:View)
         fun unbindView()
-        fun onViewCreated(data: User)
+        fun onViewCreated(data: Joke)
         fun onBackClicked()
         fun onEmptyData(msg: Int)
 
