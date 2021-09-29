@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var binding: ActivityMainBinding
 
     private val presenter: MainPresenter = MainPresenter(MainRouter(this),
-        MainInteractor(MainRepo())
+        MainInteractor(MainRepo(NetworkConfig()))
     )
 
     companion object {
@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
         initView()
         presenter.bindView(this)
         presenter.onViewCreated()

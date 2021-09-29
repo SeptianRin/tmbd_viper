@@ -2,8 +2,10 @@ package io.github.septianrin.tmdbviper.ui.detail
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import io.github.septianrin.tmdbviper.BuildConfig
@@ -47,9 +49,13 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     }
 
     override fun publishData(joke: Joke) {
-        binding.name.text =joke.name
-        binding.desc.text = joke.desc
+        binding.name.text =joke.desc
         binding.site.text = joke.site
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            binding.desc.text = Html.fromHtml(joke.elementPureHtml, Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            binding.desc.text = (Html.fromHtml(joke.elementPureHtml))
+        }
     }
 
     override fun showMessage(msg: Int) {

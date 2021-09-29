@@ -16,8 +16,9 @@ class MainPresenter(private val router: MainRouter, private val interactor: Main
 
     override fun onViewCreated() {
         view?.showLoading()
-        val data: List<Joke> = interactor.getUsers()!!
-        view?.publishData(data)
+        interactor.getUsers { list->
+            view?.publishData(list)
+        }
         view?.hideLoading()
     }
 

@@ -1,6 +1,7 @@
 package io.github.septianrin.tmdbviper.ui.main
 
 import io.github.septianrin.tmdbviper.entity.Joke
+import javax.security.auth.callback.Callback
 
 interface MainContract {
 
@@ -20,7 +21,7 @@ interface MainContract {
     }
 
     interface Interactor{
-        fun getUsers(): List<Joke>?
+        fun getUsers(onComplete: (MutableList<Joke>) -> Unit)
     }
 
     interface Router{
@@ -29,6 +30,6 @@ interface MainContract {
     }
 
     interface Repo{
-        fun getUser(): List<Joke>?
+        fun getUser(onComplete: (MutableList<Joke>) -> Unit)
     }
 }

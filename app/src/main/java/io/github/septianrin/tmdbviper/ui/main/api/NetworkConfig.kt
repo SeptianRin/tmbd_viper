@@ -1,11 +1,12 @@
 package io.github.septianrin.tmdbviper.ui.main.api
 
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkConfig {
     private var retrofit: Retrofit? = null
-    private val BASE_URL = "https://jsonplaceholder.typicode.com"
+    private val BASE_URL = "https://umorili.herokuapp.com/"
 
     fun getRetrofitInstance(): Retrofit? {
         if (retrofit == null) {
@@ -16,4 +17,6 @@ class NetworkConfig {
         }
         return retrofit
     }
+
+
 }
