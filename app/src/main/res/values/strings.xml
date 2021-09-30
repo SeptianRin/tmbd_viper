@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TMDB VIPER</string>
+    <string name="this_is_foreground">this is foreground</string>
+    <string name="this_is_background">this is background</string>
 </resources>

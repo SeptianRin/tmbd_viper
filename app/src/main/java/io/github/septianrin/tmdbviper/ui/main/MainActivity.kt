@@ -2,16 +2,15 @@ package io.github.septianrin.tmdbviper.ui.main
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.septianrin.tmdbviper.databinding.ActivityMainBinding
 import io.github.septianrin.tmdbviper.entity.Joke
 import io.github.septianrin.tmdbviper.ui.main.adapter.MainAdapter
-import io.github.septianrin.tmdbviper.ui.main.api.MainApi
 import io.github.septianrin.tmdbviper.ui.main.api.NetworkConfig
 import io.github.septianrin.tmdbviper.ui.main.data.MainRepo
 

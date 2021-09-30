@@ -26,7 +26,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     private lateinit var binding:ActivityDetailBinding
 
-    var presenter: DetailPresenter = DetailPresenter(DetailRouter(this))
+    private var presenter: DetailPresenter = DetailPresenter(DetailRouter(this))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,7 +8,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
 
     var router: SplashRouter = SplashRouter(this)
 
-    var presenter: SplashPresenter = SplashPresenter(router)
+    private var presenter: SplashPresenter = SplashPresenter(router)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
