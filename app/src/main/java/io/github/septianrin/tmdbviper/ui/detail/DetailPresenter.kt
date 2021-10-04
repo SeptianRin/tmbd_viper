@@ -1,6 +1,6 @@
 package io.github.septianrin.tmdbviper.ui.detail
 
-import io.github.septianrin.tmdbviper.entity.Joke
+import io.github.septianrin.tmdbviper.entity.MovieEntity
 
 class DetailPresenter(private val router: DetailContract.Router): DetailContract.Presenter {
 
@@ -13,8 +13,8 @@ class DetailPresenter(private val router: DetailContract.Router): DetailContract
         view = null
     }
 
-    override fun onViewCreated(data: Joke) {
-        view?.publishData(data)
+    override fun onViewCreated(movie: MovieEntity) {
+        view?.publishData(movie)
     }
 
     override fun onBackClicked() {

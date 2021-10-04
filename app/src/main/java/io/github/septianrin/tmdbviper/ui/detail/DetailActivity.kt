@@ -12,12 +12,13 @@ import io.github.septianrin.tmdbviper.BuildConfig
 import io.github.septianrin.tmdbviper.R
 import io.github.septianrin.tmdbviper.databinding.ActivityDetailBinding
 import io.github.septianrin.tmdbviper.entity.Joke
+import io.github.septianrin.tmdbviper.entity.MovieEntity
 
 class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     companion object{
         private const val USER = "${BuildConfig.APPLICATION_ID}_USER"
-        fun launch(context: Context, data: Joke) {
+        fun launch(context: Context, data: MovieEntity) {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(USER,data)
             context.startActivity(intent)
@@ -35,7 +36,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         initView()
         presenter.bindView(this)
         if (intent.hasExtra(USER)){
-            intent.getParcelableExtra<Joke>(USER)
+            intent.getParcelableExtra<MovieEntity>(USER)
             presenter.onViewCreated(intent.getParcelableExtra(USER)!!)
         }else {
             presenter.onEmptyData(R.string.app_name)
@@ -48,14 +49,10 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         binding.toolbar.toolbar.setNavigationOnClickListener { presenter.onBackClicked() }
     }
 
-    override fun publishData(joke: Joke) {
-        binding.name.text =joke.desc
-        binding.site.text = joke.site
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            binding.desc.text = Html.fromHtml(joke.elementPureHtml, Html.FROM_HTML_MODE_LEGACY)
-        } else {
-            binding.desc.text = (Html.fromHtml(joke.elementPureHtml))
-        }
+    override fun publishData(movie: MovieEntity) {
+        binding.name.text =movie.title
+        binding.site.text = movie.popularity
+        binding.desc.text = movie.overview
     }
 
     override fun showMessage(msg: Int) {

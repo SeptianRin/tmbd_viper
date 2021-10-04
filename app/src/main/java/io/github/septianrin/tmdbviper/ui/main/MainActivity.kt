@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.septianrin.tmdbviper.databinding.ActivityMainBinding
 import io.github.septianrin.tmdbviper.entity.Joke
+import io.github.septianrin.tmdbviper.entity.MovieEntity
 import io.github.septianrin.tmdbviper.ui.main.adapter.MainAdapter
 import io.github.septianrin.tmdbviper.ui.main.api.NetworkConfig
 import io.github.septianrin.tmdbviper.ui.main.data.MainRepo
@@ -62,10 +63,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         binding.progressBar.visibility = View.INVISIBLE
     }
 
-    override fun publishData(data: List<Joke>) {
+    override fun publishData(data: List<MovieEntity>) {
         val adapter = MainAdapter(data, object : MainAdapter.UserListener {
-            override fun onItemClick(joke: Joke) {
-                presenter.onItemClicked(joke)
+            override fun onItemClick(movie: MovieEntity) {
+                presenter.onItemClicked(movie)
             }
         })
         binding.recyclerView.adapter = adapter

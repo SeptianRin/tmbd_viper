@@ -7,11 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.github.septianrin.tmdbviper.R
 import io.github.septianrin.tmdbviper.entity.Joke
+import io.github.septianrin.tmdbviper.entity.MovieEntity
 
-class MainAdapter(private val jokes: List<Joke>, private val listener:UserListener): RecyclerView.Adapter<MainAdapter.ViewHolder>(){
+class MainAdapter(private val movies: List<MovieEntity>, private val listener:UserListener): RecyclerView.Adapter<MainAdapter.ViewHolder>(){
 
     interface UserListener {
-        fun onItemClick(joke:Joke)
+        fun onItemClick(movies:MovieEntity)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,14 +21,14 @@ class MainAdapter(private val jokes: List<Joke>, private val listener:UserListen
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = jokes[position].name
-        holder.desc.text = jokes[position].desc
-        holder.site.text = jokes[position].site
-        holder.itemView.setOnClickListener { listener.onItemClick(jokes[position]) }
+        holder.name.text = movies[position].title
+        holder.desc.text = movies[position].overview
+        holder.site.text = movies[position].popularity
+        holder.itemView.setOnClickListener { listener.onItemClick(movies[position]) }
     }
 
     override fun getItemCount(): Int {
-       return jokes.size
+       return movies.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

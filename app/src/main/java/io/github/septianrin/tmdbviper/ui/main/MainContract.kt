@@ -1,6 +1,8 @@
 package io.github.septianrin.tmdbviper.ui.main
 
+import io.github.septianrin.tmdbviper.entity.ApiResponse
 import io.github.septianrin.tmdbviper.entity.Joke
+import io.github.septianrin.tmdbviper.entity.MovieEntity
 import io.reactivex.rxjava3.core.Observable
 
 interface MainContract {
@@ -8,7 +10,7 @@ interface MainContract {
     interface View{
         fun showLoading()
         fun hideLoading()
-        fun publishData(data: List<Joke>)
+        fun publishData(data: List<MovieEntity>)
         fun showMessage(msg: String)
     }
 
@@ -16,20 +18,20 @@ interface MainContract {
         fun bindView(view: View)
         fun unbindView()
         fun onViewCreated()
-        fun onItemClicked(joke: Joke)
+        fun onItemClicked(movie: MovieEntity)
         fun onBackClicked()
     }
 
     interface Interactor{
-        fun getUsers(onComplete: (List<Joke>) -> Unit)
+        fun getUsers(onComplete: (List<MovieEntity>) -> Unit)
     }
 
     interface Router{
         fun finish()
-        fun openDetailUser(data: Joke)
+        fun openDetailUser(data: MovieEntity)
     }
 
     interface Repo{
-        fun getUser(): Observable<List<Joke>>
+        fun getUser(): Observable<ApiResponse>
     }
 }

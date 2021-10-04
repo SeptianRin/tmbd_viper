@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkConfig {
     lateinit var retrofit: Retrofit
-    private val baseurl = "https://umorili.herokuapp.com/"
+    private val baseurl = "https://api.themoviedb.org/3/"
 
     val retrofitInstance: Retrofit
     get() {
