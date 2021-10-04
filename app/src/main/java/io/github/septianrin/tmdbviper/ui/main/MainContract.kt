@@ -1,7 +1,6 @@
 package io.github.septianrin.tmdbviper.ui.main
 
 import io.github.septianrin.tmdbviper.entity.ApiResponse
-import io.github.septianrin.tmdbviper.entity.Joke
 import io.github.septianrin.tmdbviper.entity.MovieEntity
 import io.reactivex.rxjava3.core.Observable
 

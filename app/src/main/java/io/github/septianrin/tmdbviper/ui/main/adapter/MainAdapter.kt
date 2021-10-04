@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.github.septianrin.tmdbviper.R
-import io.github.septianrin.tmdbviper.entity.Joke
 import io.github.septianrin.tmdbviper.entity.MovieEntity
 
 class MainAdapter(private val movies: List<MovieEntity>, private val listener:UserListener): RecyclerView.Adapter<MainAdapter.ViewHolder>(){

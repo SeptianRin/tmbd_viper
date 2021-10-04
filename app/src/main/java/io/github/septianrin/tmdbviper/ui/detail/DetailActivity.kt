@@ -2,16 +2,13 @@ package io.github.septianrin.tmdbviper.ui.detail
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import io.github.septianrin.tmdbviper.BuildConfig
 import io.github.septianrin.tmdbviper.R
 import io.github.septianrin.tmdbviper.databinding.ActivityDetailBinding
-import io.github.septianrin.tmdbviper.entity.Joke
 import io.github.septianrin.tmdbviper.entity.MovieEntity
 
 class DetailActivity : AppCompatActivity(), DetailContract.View {
@@ -44,7 +41,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     }
 
     private fun initView() {
-        binding.toolbar.toolbar.title = this.localClassName
+        binding.toolbar.toolbar.title = DetailActivity::class.simpleName
         binding.toolbar.toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
         binding.toolbar.toolbar.setNavigationOnClickListener { presenter.onBackClicked() }
     }
